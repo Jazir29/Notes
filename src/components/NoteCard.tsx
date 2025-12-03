@@ -11,8 +11,8 @@ interface NoteCardProps {
 const NoteCard: React.FC<NoteCardProps> = ({ note, onEdit, onToggleFavorite }) => {
   return (
     <div 
-      className={`relative group aspect-square rounded-[2rem] p-8 flex flex-col justify-between transition-all duration-300 hover:shadow-xl hover:-translate-y-1 cursor-pointer ${note.color}`}
-      onClick={() => onEdit(note)}
+      className={`relative group aspect-square rounded-[2rem] p-8 flex flex-col justify-between transition-all 
+        duration-300 hover:shadow-xl hover:-translate-y-1 ${note.color}`}
     >
         {/* Favorite Star */}
         <div className="absolute top-6 right-6 z-10">
@@ -41,10 +41,7 @@ const NoteCard: React.FC<NoteCardProps> = ({ note, onEdit, onToggleFavorite }) =
           {note.date}
         </span>
         <button 
-          onClick={(e) => {
-            e.stopPropagation();
-            onEdit(note);
-          }}
+        onClick={() => onEdit(note)}
           className="w-10 h-10 rounded-full bg-slate-900 text-white flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-200 shadow-md transform translate-y-2 group-hover:translate-y-0"
         >
           <Pencil size={16} />
