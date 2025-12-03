@@ -81,28 +81,6 @@ const NoteEditor: React.FC = () => {
       navigate('/');
   };
 
-  const handleMagic = async () => {
-    if (!formData.title && !formData.content) return;
-    
-    setIsGenerating(true);
-    // If we have a title but no content, generate content
-    if (formData.title && !formData.content) {
-        const content = await generateNoteContent(formData.title);
-        setFormData(prev => ({ ...prev, content }));
-    } 
-    // If we have content but no title, generate title
-    else if (!formData.title && formData.content) {
-        const title = await suggestTitle(formData.content);
-        setFormData(prev => ({ ...prev, title }));
-    }
-    // If we have both, regenerate/expand content
-    else {
-         const content = await generateNoteContent(formData.title);
-         setFormData(prev => ({ ...prev, content }));
-    }
-    setIsGenerating(false);
-  };
-
   if (isLoading) return <div className="min-h-screen bg-slate-50" />;
 
   return (
