@@ -1,12 +1,13 @@
 export enum NoteColor {
-  Orange = 'bg-[#FBC486]',
-  Yellow = 'bg-[#FDF166]',
-  Pink = 'bg-[#FCA5A5]', // Adjusted to match image better
-  Purple = 'bg-[#D8B4FE]',
-  Cyan = 'bg-[#67E8F9]',
-  Green = 'bg-[#D1FAE5]',
-  White = 'bg-white'
+  Naranja = 'bg-[#FBC486]',
+  Amarillo = 'bg-[#FDF166]',
+  Rosado = 'bg-[#FCA5A5]', // Ajustado para coincidir mejor con la imagen
+  Morado = 'bg-[#D8B4FE]',
+  Cian = 'bg-[#67E8F9]',
+  Verde = 'bg-[#D1FAE5]',
+  Blanco = 'bg-white'
 }
+
 
 export interface Note {
   id: string;
