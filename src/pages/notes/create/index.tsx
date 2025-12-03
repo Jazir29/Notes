@@ -13,7 +13,7 @@ const NoteEditor: React.FC = () => {
   const [formData, setFormData] = useState<NoteFormData>({
     title: '',
     content: '',
-    color: NoteColor.Yellow,
+    color: NoteColor.Amarillo,
     isFavorite: false,
   });
   
@@ -84,7 +84,7 @@ const NoteEditor: React.FC = () => {
   if (isLoading) return <div className="min-h-screen bg-slate-50" />;
 
   return (
-    <div className={`min-h-screen transition-colors duration-500 ease-in-out ${formData.color === NoteColor.White ? 'bg-slate-50' : formData.color} flex flex-col`}>
+    <div className={`min-h-screen transition-colors duration-500 ease-in-out ${formData.color === NoteColor.Blanco ? 'bg-slate-50' : formData.color} flex flex-col`}>
       {/* Header */}
       <div className="px-6 py-6 md:px-12 md:py-8 flex items-center justify-between sticky top-0 z-10">
         <button 
