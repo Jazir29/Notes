@@ -7,19 +7,20 @@ import Layout from '../../components/Layout';
 import NoteCard from '../../components/NoteCard';
 
 const Dashboard: React.FC = () => {
+
   const navigate = useNavigate();
   const [notes, setNotes] = useState<Note[]>([]);
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedColor, setSelectedColor] = useState<NoteColor | null>(null);
 
   useEffect(() => {
-    // Simulate loading from local storage or API
-    const saved = localStorage.getItem('docket_notes');
+    // Se cargan notas desde el localstorage o inicializa con notas predeterminadas
+    const saved = localStorage.getItem('notes-storage');
     if (saved) {
         setNotes(JSON.parse(saved));
     } else {
         setNotes(INITIAL_NOTES);
-        localStorage.setItem('docket_notes', JSON.stringify(INITIAL_NOTES));
+        localStorage.setItem('notes-storage', JSON.stringify(INITIAL_NOTES));
     }
   }, []);
 
@@ -34,7 +35,7 @@ const Dashboard: React.FC = () => {
   const handleToggleFavorite = (id: string) => {
       const updated = notes.map(n => n.id === id ? { ...n, isFavorite: !n.isFavorite } : n);
       setNotes(updated);
-      localStorage.setItem('docket_notes', JSON.stringify(updated));
+      localStorage.setItem('notes-storage', JSON.stringify(updated));
   };
 
   const filteredNotes = notes.filter(note => {

@@ -23,7 +23,7 @@ const NoteEditor: React.FC = () => {
   // Load Data
   useEffect(() => {
     if (id) {
-       const saved = localStorage.getItem('docket_notes');
+       const saved = localStorage.getItem('notes-storage');
        let notes: Note[] = saved ? JSON.parse(saved) : INITIAL_NOTES;
        const note = notes.find(n => n.id === id);
        if (note) {
@@ -49,7 +49,7 @@ const NoteEditor: React.FC = () => {
   }, [id, navigate]);
 
   const handleSave = () => {
-      const saved = localStorage.getItem('docket_notes');
+      const saved = localStorage.getItem('notes-storage');
       let notes: Note[] = saved ? JSON.parse(saved) : INITIAL_NOTES;
 
       if (id) {
@@ -65,7 +65,7 @@ const NoteEditor: React.FC = () => {
           notes = [newNote, ...notes];
       }
       
-      localStorage.setItem('docket_notes', JSON.stringify(notes));
+      localStorage.setItem('notes-storage', JSON.stringify(notes));
       navigate('/');
   };
 
@@ -74,10 +74,10 @@ const NoteEditor: React.FC = () => {
       const confirmDelete = window.confirm("Are you sure you want to delete this note?");
       if (!confirmDelete) return;
 
-      const saved = localStorage.getItem('docket_notes');
+      const saved = localStorage.getItem('notes-storage');
       let notes: Note[] = saved ? JSON.parse(saved) : INITIAL_NOTES;
       notes = notes.filter(n => n.id !== id);
-      localStorage.setItem('docket_notes', JSON.stringify(notes));
+      localStorage.setItem('notes-storage', JSON.stringify(notes));
       navigate('/');
   };
 
