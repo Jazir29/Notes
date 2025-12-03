@@ -4,7 +4,6 @@ import { ArrowLeft, Sparkles, Wand2, Trash2, Save } from 'lucide-react';
 import { Note, NoteColor, NoteFormData } from '../../../types';
 import { COLOR_PALETTE, INITIAL_NOTES } from '../../../constants';
 import Button from '../../../components/Button';
-import { generateNoteContent, suggestTitle } from '../../../services/geminiService';
 
 const NoteEditor: React.FC = () => {
   const navigate = useNavigate();
@@ -169,16 +168,6 @@ const NoteEditor: React.FC = () => {
             onChange={(e) => setFormData({...formData, content: e.target.value})}
             className="w-full flex-1 min-h-[40vh] bg-transparent text-xl md:text-2xl text-slate-800 placeholder-slate-900/20 focus:outline-none resize-none leading-relaxed"
         />
-        
-        {/* AI FAB */}
-         <button
-            onClick={handleMagic}
-            disabled={isGenerating}
-            className="fixed bottom-8 right-8 md:bottom-12 md:right-12 flex items-center gap-3 px-6 py-4 rounded-full bg-slate-900 text-white shadow-2xl hover:bg-slate-800 hover:scale-105 transition-all disabled:opacity-50 z-20"
-         >
-            {isGenerating ? <Sparkles size={20} className="animate-spin" /> : <Wand2 size={20} />}
-            <span className="font-semibold text-lg">AI Magic</span>
-         </button>
       </div>
     </div>
   );
